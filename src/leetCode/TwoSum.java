@@ -1,5 +1,8 @@
 package leetCode;
 
+import java.util.HashMap;
+import java.util.HashSet;
+
 /**
  * @author Ransford TODO Given an array of integers, find two numbers such that
  *         they add up to a specific target number.
@@ -18,14 +21,17 @@ public class TwoSum {
 	public class Solution {
 		public int[] twoSum(int[] numbers, int target) {
 			int[] index = new int[2];
+			HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
+			for (int i = 0; i < numbers.length; i++) {
+				map.put(numbers[i], i);
+			}
 
 			for (int i = 0; i < numbers.length; i++) {
-				for (int j = i + 1; j < numbers.length; j++) {
-					if (numbers[i] + numbers[j] == target) {
-						index[0] = numbers[i];
-						index[1] = numbers[j];
-						return index;
-					}
+				if (map.containsKey(target - numbers[i])
+						&& map.get(target - numbers[i]) != i) {
+					index[0] = i + 1;
+					index[1] = map.get(target - numbers[i]) + 1;
+					return index;
 				}
 			}
 
