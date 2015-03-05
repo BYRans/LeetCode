@@ -10,8 +10,8 @@ public class runTest {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		int[] numbers = { 2, 7, 11, 15 };
-		int target = 9;
+		int[] numbers = { 3,2,4 };
+		int target = 6;
 
 		TwoSum twoSum = new TwoSum();
 		Solution solution = twoSum.new Solution();
