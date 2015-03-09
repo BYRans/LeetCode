@@ -23,61 +23,26 @@ public class AddTwoNumbers {
 
 	public class Solution {
 		public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-			ListNode first = l1;
-			ListNode second = l2;
 			ListNode root = new ListNode(0);
 			ListNode tmp = root;
-			int flag = 0;
-			int digit = 0;
-			while (first != null && second != null) {
-				int score = first.val + second.val + flag;
-				if (score >= 10)
-					digit = score - 10;
-				else
-					digit = score;
-				tmp.next = new ListNode(digit);
-
-				if (score >= 10)
-					flag = 1;
-				else
-					flag = 0;
-
+			int score = 0;
+			while (l1 != null || l2 != null) {
+				if(l1 != null){
+					score += l1.val;
+					l1 = l1.next;
+				}
+				
+				if(l2 != null){
+					score += l2.val;
+					l2 = l2.next;
+				}
+				
+				tmp.next = new ListNode(score % 10);
 				tmp = tmp.next;
-				first = first.next;
-				second = second.next;
+				score /= 10;
 			}
 
-			ListNode remain = null;
-			if (first != null) {
-				remain = first;
-			} else if (second != null) {
-				remain = second;
-			} else {
-				if (flag == 1)
-					tmp.next = new ListNode(1);
-				return root.next;
-			}
-
-			while (remain != null) {
-
-				int score = remain.val + flag;
-				flag = 0;
-				if (score >= 10)
-					digit = score - 10;
-				else
-					digit = score;
-
-				tmp.next = new ListNode(digit);
-
-				if (score >= 10)
-					flag = 1;
-				else
-					flag = 0;
-				tmp = tmp.next;
-				remain = remain.next;
-			}
-
-			if (flag == 1)
+			if (score == 1)
 				tmp.next = new ListNode(1);
 			return root.next;
 		}
