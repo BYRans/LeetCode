@@ -12,8 +12,8 @@ public class runTest {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		int[] numbers = { 3, 2, 4 };
-		int target = 6;
+//		int[] numbers = { 3, 2, 4 };
+//		int target = 6;
 		
 		AddTwoNumbers ln = new AddTwoNumbers();
 		Solution solution = ln.new Solution();
