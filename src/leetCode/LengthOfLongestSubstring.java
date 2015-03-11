@@ -1,7 +1,9 @@
 package leetCode;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 
 /**
  * @author Ransford TODO Given a string, find the length of the longest
@@ -13,30 +15,27 @@ import java.util.HashSet;
 public class LengthOfLongestSubstring {
 	public class Solution {
 		public int lengthOfLongestSubstring(String s) {
+			if (s == null || s.equals(""))
+				return 0;
 			HashSet<String> charSet = new HashSet<String>();
-			int[] arr = new int[s.length()];
-			for (int i = 0; i < s.length(); i++) {
-				if (!charSet.contains(s.charAt(i) + "")) {
-					charSet.add(s.charAt(i) + "");
-					arr[i] = 1;
-				} else
-					arr[i] = 0;
-			}
+			s = s + s.charAt(s.length() - 1);
+			char[] cArr = s.toCharArray();
 			int max = 0;
-			int count = 0;
-			for (int n : arr) {
-				if (n == 1)
-					count++;
-				else {
-					if (count > max) {
-						max = count;
-						count = 1;
+			for (int i = 0; i < cArr.length; i++) {
+				int tmp = 0;
+				for (int j = i; j < cArr.length; j++) {
+					if (!charSet.contains(cArr[j] + "")) {
+						tmp++;
+						charSet.add(cArr[j] + "");
+					} else {
+						if (tmp > max)
+							max = tmp;
+						tmp = 1;
+						charSet.clear();
 					}
 				}
 			}
-			
-			if (count > max)
-				max = count;
+
 			return max;
 		}
 	}
