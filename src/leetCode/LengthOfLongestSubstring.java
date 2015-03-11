@@ -34,6 +34,7 @@ public class LengthOfLongestSubstring {
 					}
 				}
 			}
+			
 			if (count > max)
 				max = count;
 			return max;
