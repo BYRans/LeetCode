@@ -34,7 +34,6 @@ public class LengthOfLongestSubstring {
 				if (i - begin + 1 > max)
 					max = i - begin + 1;
 			}
-			
 			return max;
 		}
 	}
