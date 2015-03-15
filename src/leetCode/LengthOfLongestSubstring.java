@@ -1,4 +1,4 @@
-package leetCode;
+package LeetCode.src.leetCode;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -34,6 +34,7 @@ public class LengthOfLongestSubstring {
 				if (i - begin + 1 > max)
 					max = i - begin + 1;
 			}
+			
 			return max;
 		}
 	}

@@ -1,7 +1,7 @@
-package leetCode;
+package LeetCode.src.leetCode;
 
-import leetCode.LengthOfLongestSubstring;
-import leetCode.LengthOfLongestSubstring.Solution;
+import LeetCode.src.leetCode.LengthOfLongestSubstring;
+import LeetCode.src.leetCode.LengthOfLongestSubstring.Solution;
 
 /**
  * @author Ransford TODO
