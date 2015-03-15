@@ -13,7 +13,7 @@ public class RunTest {
 
 		LengthOfLongestSubstring test = new LengthOfLongestSubstring();
 		Solution solution = test.new Solution();
-		String s = "aabgsdapoiuyt";
+		String s = "abbcd";
 		int score = solution.lengthOfLongestSubstring(s);
 
 		System.out.print(score);

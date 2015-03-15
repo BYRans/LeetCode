@@ -15,27 +15,25 @@ import java.util.List;
 public class LengthOfLongestSubstring {
 	public class Solution {
 		public int lengthOfLongestSubstring(String s) {
-			if (s == null || s.equals(""))
+			if ("".equals(s.length()))
 				return 0;
-			HashSet<String> charSet = new HashSet<String>();
-			s = s + s.charAt(s.length() - 1);
+			HashMap<String, Integer> map = new HashMap<String, Integer>();
 			char[] cArr = s.toCharArray();
 			int max = 0;
+			int begin = 0;
 			for (int i = 0; i < cArr.length; i++) {
-				int tmp = 0;
-				for (int j = i; j < cArr.length; j++) {
-					if (!charSet.contains(cArr[j] + "")) {
-						tmp++;
-						charSet.add(cArr[j] + "");
-					} else {
-						if (tmp > max)
-							max = tmp;
-						tmp = 1;
-						charSet.clear();
-					}
-				}
-			}
+				if (map.get(cArr[i] + "") == null) {
+					map.put(cArr[i] + "", 0);
+				} else
+					map.put(cArr[i] + "", map.get(cArr[i] + "") + 1);
 
+				while (map.get(cArr[i] + "") >= 1) {
+					map.put(cArr[i] + "", map.get(cArr[i] + "") - 1);
+					begin++;
+				}
+				if (i - begin + 1 > max)
+					max = i - begin + 1;
+			}
 			return max;
 		}
 	}
