@@ -1,4 +1,4 @@
-package LeetCode.src.leetCode;
+package leetCode;
 
 /**
  * @author Ransford TODO You are given two linked lists representing two
