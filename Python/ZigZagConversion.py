@@ -8,26 +8,20 @@ class Solution:
 	# @param {integer} numRows
 	# @return {string}
 	def convert(self, s, numRows):
-		myList = [[] for i in range(numRows)]
-		index = 0
-		column = 0
+		if numRows == 1:
+			return s
+		step = 2 * numRows - 2
 		result = ''
-		while index < len(s):
-			for row in range(numRows):
-				if index == len(s):
-					break
-				myList[row].append(s[index])
-				index += 1
-			for row in range (numRows-2,0,-1):
-				if index == len(s):
-					break
-				myList[row].append(s[index])
-				index += 1
-		for row in myList:
-			for code in row:
-				result += code
+		result += s[::step]
+		for i in range(1,numRows-1):
+			for j in range(i,len(s),step):
+				result += s[j]
+				if j+(step - i*2) < len(s):
+					result += s[j+(step - i*2)]
+		result += s[numRows-1::step]
 		return result
 
 solution = Solution()
-result = solution.convert('ABC',2)
+result = solution.convert('ABC',3)
 print result	
+	
