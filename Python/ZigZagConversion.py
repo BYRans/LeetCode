@@ -8,35 +8,26 @@ class Solution:
 	# @param {integer} numRows
 	# @return {string}
 	def convert(self, s, numRows):
-		divisor = (2*numRows - 2)
-		numColumns = 1
-		numGroups = 1
-		if divisor > 0:
-			numGroups = len(s) / (2*numRows - 2) + 1
-			numColumns = (len(s) / (2*numRows - 2) + 1)* (numRows - 1) 
-		myList = [([' ']*numColumns) for i in range(numRows)]
+		myList = [[] for i in range(numRows)]
 		index = 0
 		column = 0
 		result = ''
-		for group in range(numGroups):
+		while index < len(s):
 			for row in range(numRows):
 				if index == len(s):
 					break
-				myList[row][column] = s[index]
+				myList[row].append(s[index])
 				index += 1
 			for row in range (numRows-2,0,-1):
 				if index == len(s):
 					break
-				column += 1
-				myList[row][column] = s[index]
+				myList[row].append(s[index])
 				index += 1
-			column += 1
 		for row in myList:
 			for code in row:
-				if code != ' ':
-					result += code
+				result += code
 		return result
 
 solution = Solution()
-result = solution.convert('ABCDE',4)
+result = solution.convert('ABC',2)
 print result	
